@@ -1,3 +1,5 @@
+package magicalarena;
+
 public class Player {
     private String name;
     private int health;

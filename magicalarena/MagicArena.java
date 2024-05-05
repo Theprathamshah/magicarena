@@ -1,7 +1,5 @@
 package magicalarena;
 
-import java.util.Random;
-
 
 public class MagicArena {
 

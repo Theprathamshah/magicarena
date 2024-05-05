@@ -2,21 +2,20 @@ package magicalarena;
 
 import java.util.Random;
 
-import static magicalarena.Dice.rollDice;
 
 public class MagicArena {
-    private static Player currentPlayer;
-    private static Player otherPlayer;
 
-    public static void startGame(Player p1, Player p2) {
-        currentPlayer = p1;
-        currentPlayer = p2;
+    public  void startGame(Player p1, Player p2) {
+        Player currentPlayer = p1.getHealth()<p2.getHealth()?p1:p2;
+        Player otherPlayer = currentPlayer.equals(p1)?p2:p1;
 
         while (currentPlayer.getHealth() > 0 && otherPlayer.getHealth() > 0) {
-            Random random = new Random();
+            Dice dice = new Dice();
+            int currentPlayerRoll = dice.rollDice();
+            int otherPlayerRoll = dice.rollDice();
 
-            int currentPlayerRoll = rollDice(random);
-            int otherPlayerRoll = rollDice(random);
+            System.out.println("Attacker is %s with dice roll %d".formatted(currentPlayer.getName(),currentPlayerRoll));
+            System.out.println("Defender is %s with dice roll %d".formatted(otherPlayer.getName(),otherPlayerRoll));
 
             int attackDamage = currentPlayerRoll * currentPlayer.getAttackPoints();
             int defendingStrength = otherPlayerRoll*otherPlayer.getStrength();
@@ -25,7 +24,7 @@ public class MagicArena {
 
             otherPlayer.takeDamage(damageTaken);
 
-
+            System.out.println("After this round %s's health is %d and %s's health is %d".formatted(currentPlayer.getName(),currentPlayer.getHealth(),otherPlayer.getName(),otherPlayer.getHealth()));
             Player temporaryPlayer = currentPlayer;
             currentPlayer = otherPlayer;
             otherPlayer = temporaryPlayer;
@@ -35,7 +34,4 @@ public class MagicArena {
         System.out.println("Player %s is winner!".formatted(winner.getName()));
     }
 
-    private static void updatePlayer(Player player,String name,int health){
-        System.out.println("health of player %s is %d".formatted(name,health));
-    }
 }

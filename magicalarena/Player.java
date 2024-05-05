@@ -13,6 +13,10 @@ public class Player {
         this.attackPoints = attackPoints;
     }
 
+    public Player() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -47,5 +51,15 @@ public class Player {
 
     public void takeDamage(int damage) {
         health -= damage;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", strength=" + strength +
+                ", attackPoints=" + attackPoints +
+                '}';
     }
 }

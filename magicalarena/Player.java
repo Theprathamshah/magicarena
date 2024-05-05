@@ -53,13 +53,4 @@ public class Player {
         health -= damage;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", strength=" + strength +
-                ", attackPoints=" + attackPoints +
-                '}';
-    }
 }

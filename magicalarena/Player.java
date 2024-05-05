@@ -2,11 +2,11 @@ package magicalarena;
 
 public class Player {
     private String name;
-    private int health;
-    private int strength;
-    private int attackPoints;
+    private Integer health;
+    private Integer strength;
+    private Integer attackPoints;
 
-    public Player(String name,int health,int strength,int attackPoints){
+    public Player(String name, int health, int strength, int attackPoints) {
         this.name = name;
         this.health = health;
         this.strength = strength;
@@ -44,7 +44,8 @@ public class Player {
     public void setAttackPoints(int attackPoints) {
         this.attackPoints = attackPoints;
     }
-    public void takeDamage(int damage){
+
+    public void takeDamage(int damage) {
         health -= damage;
     }
 }
